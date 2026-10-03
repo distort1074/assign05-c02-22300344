@@ -5,8 +5,8 @@ HTML, CSS, JavaScript로 과목별 학습 할 일을 관리하는 한 페이지 
 ## Deployment
 
 - 수업 저장소: https://github.com/2026-2-OSS/assign05-c02-22300344
-- 기존 Vercel 주소: https://assign05-c02-22300344.vercel.app/
-- 위 배포 주소는 현재 이전 **도서 관리** 버전을 표시합니다. 이번 **학습 할 일 관리** 버전은 수업 저장소 `main`으로 다시 배포해야 합니다.
+- Vercel 배포 주소: https://assign05-c02-22300344.vercel.app/
+- 2026-10-04, **학습 할 일 관리** 버전의 배포와 Chrome 데스크톱·모바일 동작 검사를 완료했습니다.
 - 로컬 실행: `index.html`을 브라우저에서 엽니다. 별도 서버나 빌드가 필요하지 않습니다.
 
 ## STEP 1. JavaScript DOM Practice
@@ -117,7 +117,7 @@ node browser-check.cjs
 
 로컬 Chrome 1366px / 390px에서 DOM 추가·삭제, 초기 데이터, CRUD, 등록·수정 검증, 삭제 확인·취소, 수정 취소, 빈 목록, ID 유지, 새로고침, 페이지 이동, 가로 넘침을 검사했습니다. 모두 통과했고 JavaScript 실행 오류는 없었습니다.
 
-새 버전 배포 후에는 다음 명령으로 같은 검사를 실행할 수 있습니다. 기존 주소에 대한 검사는 이전 도서 관리 코드가 배포되어 있어 아직 통과하지 않습니다.
+배포 사이트에서도 같은 검사를 실행하여 통과했습니다. 다음 명령으로 다시 확인할 수 있습니다.
 
 ```sh
 node browser-check.cjs https://assign05-c02-22300344.vercel.app/
@@ -130,16 +130,28 @@ node browser-check.cjs https://assign05-c02-22300344.vercel.app/
 - STEP 3: 초기 Array 작성 완료
 - STEP 4: 입력 Form과 목록 Table 작성 완료
 - STEP 5~10: CRUD, Validation, CSS 구현 및 로컬 브라우저 검사 완료
-- STEP 11: index 연결과 수업 저장소 Push 완료, 새 버전 Vercel 배포 필요
+- STEP 11: index 연결, 두 저장소 Push, Vercel 배포 및 배포 사이트 검사 완료
 - Weekly Question: `weekly_questions.md` 초안 검토 후 Google Form 제출 필요
 - README의 개인 학습 내용 및 Reflection 작성 필요
 
 ## AI / Search Usage
 
-Tool - OpenAI Codex
+**Tool** - OpenAI Codex
 
-Purpose - DOM 실습과 학습 할 일 CRUD 서비스의 단계별 구현·검사 지원
+**Purpose** - DOM 실습과 학습 할 일 CRUD 서비스의 단계별 구현·검사 지원
 
-Used - AI가 DOM 및 CRUD 코드, 스타일, 문서와 검사 코드를 작성했으며, 사용자 승인에 따라 단계별 커밋·Push에도 활용함
+**Used** - AI가 DOM 및 CRUD 코드, 스타일, 문서와 검사 코드를 작성했으며, 사용자 승인에 따라 단계별 커밋·Push에도 활용함
 
-What I Learned - 예를 들어 확인했다면 “createElement()는 요소를 만들고, appendChild()는 해당 요소를 화면의 목록에 연결한다는 것을 이해함.”\]
+**What I Learned — 코드에서 정리한 개념**
+
+- `createElement()`는 새로운 HTML 요소를 만들고, `appendChild()`는 만든 요소를 부모 요소에 연결합니다.
+- `addEventListener()`는 버튼 클릭이나 Form 제출처럼 특정 이벤트가 발생했을 때 실행할 함수를 등록합니다.
+- `preventDefault()`는 Form 제출 시 페이지가 새로고침되는 기본 동작을 막습니다.
+- `trim()`은 문자열 앞뒤 공백을 제거하므로, 공백만 입력한 경우를 검사할 때 사용할 수 있습니다.
+- `push()`는 Array의 끝에 새 데이터를 추가합니다. 이 서비스에서는 새로운 할 일을 등록할 때 사용합니다.
+- `find()`는 조건을 만족하는 첫 번째 요소를 반환합니다. 수정할 항목의 ID를 비교해 해당 객체를 찾는 데 사용합니다.
+- `filter()`는 조건을 만족하는 요소로 새 Array를 만듭니다. 삭제할 ID를 제외한 Array를 다시 저장하여 삭제를 구현합니다.
+- Array의 값이 바뀌어도 화면은 자동으로 갱신되지 않습니다. 데이터 변경 후 `render()`를 호출하여 목록을 다시 출력합니다.
+- 등록과 수정에서 같은 검증 함수를 사용하면 필수값, 문자열 길이, 날짜와 선택값에 동일한 조건을 적용할 수 있습니다.
+- `textContent`는 입력값을 HTML로 해석하지 않고 문자 그대로 표시합니다.
+- 이 서비스의 데이터는 메모리의 Array에만 저장되므로, 페이지를 새로고침하면 초기 데이터로 돌아갑니다.
