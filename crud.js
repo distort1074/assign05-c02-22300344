@@ -29,3 +29,62 @@ let tasks = [
 
 // 새 항목을 추가할 때 사용할 번호입니다. 삭제한 번호는 다시 사용하지 않습니다.
 let nextId = 4;
+
+const form = document.getElementById('task-form');
+const titleInput = document.getElementById('task-title');
+const subjectInput = document.getElementById('task-subject');
+const dateInput = document.getElementById('task-date');
+const priorityInput = document.getElementById('task-priority');
+const statusInput = document.getElementById('task-status');
+const list = document.getElementById('task-list');
+
+// Array의 현재 내용으로 표 전체를 다시 만듭니다.
+function render() {
+    list.textContent = '';
+    document.getElementById('task-count').textContent = '전체 ' + tasks.length + '개';
+
+    if (tasks.length === 0) {
+        const row = document.createElement('tr');
+        const cell = document.createElement('td');
+        cell.colSpan = 7;
+        cell.className = 'empty';
+        cell.textContent = '등록된 할 일이 없습니다. 첫 번째 할 일을 추가하세요.';
+        row.appendChild(cell);
+        list.appendChild(row);
+        return;
+    }
+
+    tasks.forEach(function (task) {
+        const row = document.createElement('tr');
+        const values = [task.id, task.title, task.subject, task.dueDate, task.priority, task.status];
+        values.forEach(function (value) {
+            const cell = document.createElement('td');
+            // 입력한 문자열을 HTML로 실행하지 않고 글자로 표시합니다.
+            cell.textContent = value;
+            row.appendChild(cell);
+        });
+
+        const actions = document.createElement('td');
+        actions.className = 'row-actions';
+        const editButton = document.createElement('button');
+        editButton.type = 'button';
+        editButton.className = 'edit-button';
+        editButton.textContent = '수정';
+        editButton.disabled = true;
+        editButton.setAttribute('aria-label', task.title + ' 수정');
+
+        const deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.className = 'delete-button';
+        deleteButton.textContent = '삭제';
+        deleteButton.disabled = true;
+        deleteButton.setAttribute('aria-label', task.title + ' 삭제');
+
+        actions.appendChild(editButton);
+        actions.appendChild(deleteButton);
+        row.appendChild(actions);
+        list.appendChild(row);
+    });
+}
+
+render();

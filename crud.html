@@ -63,6 +63,7 @@
 
         <section aria-labelledby="list-heading">
             <h2 id="list-heading">학습 목록</h2>
+            <p id="task-count" role="status"></p>
             <div class="table-wrap" tabindex="0" role="region" aria-label="학습 할 일 표">
                 <table>
                     <caption>할 일과 과목, 마감일, 우선순위, 진행 상태</caption>
@@ -77,15 +78,7 @@
                             <th scope="col">관리</th>
                         </tr>
                     </thead>
-                    <tbody id="task-list">
-                        <tr>
-                            <td colspan="6" class="empty">목록을 준비 중입니다.</td>
-                            <td class="row-actions">
-                                <button type="button" class="edit-button" disabled>수정</button>
-                                <button type="button" class="delete-button" disabled>삭제</button>
-                            </td>
-                        </tr>
-                    </tbody>
+                    <tbody id="task-list"></tbody>
                 </table>
             </div>
         </section>
