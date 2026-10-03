@@ -38,11 +38,20 @@ HTML, CSS, JavaScript로 과목별 학습 할 일을 관리하는 한 페이지 
 
 서버, Database, localStorage를 사용하지 않습니다. 데이터는 JavaScript Array에 저장하며 새로고침하면 초기 데이터로 돌아가도록 구현할 예정입니다.
 
+## STEP 3. 초기 Array
+
+- 파일: `crud.js`
+- `tasks` Array에 6개 필드를 가진 초기 학습 할 일 3개를 작성했습니다.
+- 초기 ID는 1, 2, 3이며, 새 항목에 사용할 `nextId`는 4부터 시작합니다.
+- 현재는 데이터 선언만 완료했으며, HTML 연결과 화면 출력은 이후 단계에서 구현합니다.
+- 이번 초기 Array 작성과 데이터 검사는 OpenAI Codex를 활용했습니다.
+
 ## 현재 진행 상황
 
 - STEP 1: 구현 및 브라우저 확인 완료
 - STEP 2: 주제와 필드 설계 완료
-- STEP 3 이후: 아직 구현하지 않음
+- STEP 3: 초기 Array 작성 완료
+- STEP 4 이후: 아직 구현하지 않음
 - 이번 재시작 버전의 배포 확인: 아직 진행하지 않음
 
 ## AI / Search Usage
