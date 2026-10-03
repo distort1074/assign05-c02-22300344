@@ -41,12 +41,26 @@ const list = document.getElementById('task-list');
 const message = document.getElementById('message');
 const saveButton = document.getElementById('save-button');
 const cancelButton = document.getElementById('cancel-button');
+const error = document.getElementById('form-error');
+const fields = [titleInput, subjectInput, dateInput, priorityInput, statusInput];
+
+function clearErrors() {
+    error.textContent = '';
+    fields.forEach(function (field) {
+        field.setCustomValidity('');
+        field.removeAttribute('aria-invalid');
+        field.removeAttribute('aria-describedby');
+    });
+}
+
+fields.forEach(function (field) {
+    field.addEventListener('input', clearErrors);
+});
 
 function resetForm() {
     editingId = null;
     form.reset();
-    titleInput.setCustomValidity('');
-    subjectInput.setCustomValidity('');
+    clearErrors();
     document.getElementById('form-heading').textContent = '할 일 등록';
     saveButton.textContent = '등록';
     cancelButton.hidden = true;
@@ -89,13 +103,37 @@ cancelButton.addEventListener('click', function () {
 
 // 등록과 수정에서 함께 사용할 입력 검사입니다.
 function validate() {
-    titleInput.setCustomValidity(titleInput.value.trim() ? '' : '할 일을 입력하세요.');
-    subjectInput.setCustomValidity(subjectInput.value.trim() ? '' : '과목을 입력하세요.');
-    return form.reportValidity();
-}
+    clearErrors();
+    const title = titleInput.value.trim();
+    const subject = subjectInput.value.trim();
+    if (title.length < 1 || title.length > 60) {
+        titleInput.setCustomValidity('할 일은 공백을 제외하고 1~60자로 입력하세요.');
+    }
+    if (subject.length < 1 || subject.length > 30) {
+        subjectInput.setCustomValidity('과목은 공백을 제외하고 1~30자로 입력하세요.');
+    }
+    if (!dateInput.checkValidity()) {
+        dateInput.setCustomValidity('유효한 마감일을 입력하세요. (0001~9999년)');
+    }
+    if (!['낮음', '보통', '높음'].includes(priorityInput.value)) {
+        priorityInput.setCustomValidity('우선순위를 선택하세요.');
+    }
+    if (!['시작 전', '진행 중', '완료'].includes(statusInput.value)) {
+        statusInput.setCustomValidity('진행 상태를 선택하세요.');
+    }
 
-titleInput.addEventListener('input', function () { titleInput.setCustomValidity(''); });
-subjectInput.addEventListener('input', function () { subjectInput.setCustomValidity(''); });
+    for (let i = 0; i < fields.length; i++) {
+        if (!fields[i].checkValidity()) {
+            error.textContent = fields[i].validationMessage;
+            fields[i].setAttribute('aria-invalid', 'true');
+            fields[i].setAttribute('aria-describedby', 'form-error');
+            fields[i].reportValidity();
+            fields[i].focus();
+            return false;
+        }
+    }
+    return true;
+}
 
 form.addEventListener('submit', function (event) {
     event.preventDefault();

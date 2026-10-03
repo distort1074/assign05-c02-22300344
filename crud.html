@@ -22,7 +22,7 @@
             <h2 id="form-heading">할 일 등록</h2>
             <p id="form-help" class="help">모든 항목을 입력하세요. 새로고침하면 초기 목록으로 돌아갑니다.</p>
 
-            <form id="task-form" aria-describedby="form-help">
+            <form id="task-form" aria-describedby="form-help" novalidate>
                 <div class="form-grid">
                     <div class="wide-field">
                         <label for="task-title">할 일</label>
@@ -34,7 +34,7 @@
                     </div>
                     <div>
                         <label for="task-date">마감일</label>
-                        <input id="task-date" name="dueDate" type="date" required>
+                        <input id="task-date" name="dueDate" type="date" min="0001-01-01" max="9999-12-31" required>
                     </div>
                     <div>
                         <label for="task-priority">우선순위</label>
@@ -55,6 +55,7 @@
                         </select>
                     </div>
                 </div>
+                <p id="form-error" role="alert"></p>
                 <div class="form-actions">
                     <button id="save-button" type="submit">등록</button>
                     <button id="cancel-button" type="button" class="edit-button" hidden>수정 취소</button>
