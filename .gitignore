@@ -1,0 +1,7 @@
+node_modules/
+test-results/
+browser-check-profile/
+chrome-check-profile/
+.vercel/
+.env
+.env.*
