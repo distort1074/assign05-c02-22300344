@@ -1,0 +1,84 @@
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: #faf8f4;
+    color: #293246;
+    font-family: "Malgun Gothic", sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 6%;
+    background: #293246;
+    color: white;
+}
+
+.brand { font-weight: bold; letter-spacing: 2px; }
+header a { color: white; font-size: 14px; }
+main { max-width: 1100px; margin: auto; padding: 36px 24px; }
+.eyebrow { margin-bottom: 4px; color: #9a481b; font-weight: bold; }
+h1 { margin: 0; font-size: 34px; }
+.description, .help { color: #626975; }
+.help { font-size: 14px; }
+
+section {
+    margin-top: 28px;
+    padding: 24px;
+    background: white;
+    border: 1px solid #e0ddd7;
+    border-radius: 8px;
+}
+
+h2 { margin-top: 0; font-size: 20px; }
+.form-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.wide-field { grid-column: span 2; }
+label { display: block; margin-bottom: 6px; font-size: 14px; font-weight: bold; }
+
+input, select {
+    width: 100%;
+    min-width: 0;
+    height: 44px;
+    padding: 8px 10px;
+    border: 1px solid #bfc3cb;
+    border-radius: 4px;
+    background: white;
+    color: inherit;
+    font: inherit;
+}
+
+.form-actions { margin-top: 20px; text-align: right; }
+button {
+    padding: 9px 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: #aa4d1b;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+}
+button:hover:not(:disabled) { background: #81380f; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+:focus-visible { outline: 3px solid #ca773b; outline-offset: 3px; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+caption { text-align: left; margin-bottom: 12px; color: #626975; font-size: 13px; }
+th, td { padding: 14px 12px; border-bottom: 1px solid #e8e5e0; text-align: left; }
+th { background: #f3f1ed; white-space: nowrap; }
+.empty { text-align: center; color: #626975; }
+.row-actions { white-space: nowrap; }
+.row-actions button { padding: 5px 9px; font-size: 13px; }
+.edit-button { background: #293246; }
+.delete-button { background: #a13636; }
+footer { padding: 24px; text-align: center; color: #626975; font-size: 12px; }
+
+@media (max-width: 650px) {
+    main { padding: 28px 16px; }
+    section { padding: 18px; }
+    h1 { font-size: 28px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .wide-field { grid-column: auto; }
+}

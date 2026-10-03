@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학습 할 일 관리</title>
+    <link rel="stylesheet" href="crud.css">
+    <script src="crud.js" defer></script>
+</head>
+<body>
+    <header>
+        <span class="brand">STUDY NOTE</span>
+        <a href="js_dynamic.html">DOM 실습</a>
+    </header>
+
+    <main>
+        <p class="eyebrow">나의 학습 계획</p>
+        <h1>오늘의 공부, 하나씩.</h1>
+        <p class="description">할 일과 마감일을 정리하고, 학습 진행 상황을 기록하세요.</p>
+
+        <section aria-labelledby="form-heading">
+            <h2 id="form-heading">할 일 등록</h2>
+            <p id="form-help" class="help">현재 화면 구성 단계입니다. 저장·수정·삭제는 아직 사용할 수 없습니다.</p>
+
+            <form id="task-form" aria-describedby="form-help">
+                <div class="form-grid">
+                    <div class="wide-field">
+                        <label for="task-title">할 일</label>
+                        <input id="task-title" name="title" type="text" maxlength="60" placeholder="예: JavaScript Array 복습" required>
+                    </div>
+                    <div>
+                        <label for="task-subject">과목</label>
+                        <input id="task-subject" name="subject" type="text" maxlength="30" placeholder="예: 웹 프로그래밍" required>
+                    </div>
+                    <div>
+                        <label for="task-date">마감일</label>
+                        <input id="task-date" name="dueDate" type="date" required>
+                    </div>
+                    <div>
+                        <label for="task-priority">우선순위</label>
+                        <select id="task-priority" name="priority" required>
+                            <option value="">선택하세요</option>
+                            <option value="낮음">낮음</option>
+                            <option value="보통">보통</option>
+                            <option value="높음">높음</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="task-status">진행 상태</label>
+                        <select id="task-status" name="status" required>
+                            <option value="">선택하세요</option>
+                            <option value="시작 전">시작 전</option>
+                            <option value="진행 중">진행 중</option>
+                            <option value="완료">완료</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button id="save-button" type="submit" disabled>등록</button>
+                </div>
+            </form>
+        </section>
+
+        <section aria-labelledby="list-heading">
+            <h2 id="list-heading">학습 목록</h2>
+            <div class="table-wrap" tabindex="0" role="region" aria-label="학습 할 일 표">
+                <table>
+                    <caption>할 일과 과목, 마감일, 우선순위, 진행 상태</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">할 일</th>
+                            <th scope="col">과목</th>
+                            <th scope="col">마감일</th>
+                            <th scope="col">우선순위</th>
+                            <th scope="col">진행 상태</th>
+                            <th scope="col">관리</th>
+                        </tr>
+                    </thead>
+                    <tbody id="task-list">
+                        <tr>
+                            <td colspan="6" class="empty">목록을 준비 중입니다.</td>
+                            <td class="row-actions">
+                                <button type="button" class="edit-button" disabled>수정</button>
+                                <button type="button" class="delete-button" disabled>삭제</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <footer>STUDY NOTE · JavaScript CRUD Practice</footer>
+</body>
+</html>
