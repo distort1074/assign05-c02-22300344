@@ -37,6 +37,37 @@ const dateInput = document.getElementById('task-date');
 const priorityInput = document.getElementById('task-priority');
 const statusInput = document.getElementById('task-status');
 const list = document.getElementById('task-list');
+const message = document.getElementById('message');
+
+// 등록과 수정에서 함께 사용할 입력 검사입니다.
+function validate() {
+    titleInput.setCustomValidity(titleInput.value.trim() ? '' : '할 일을 입력하세요.');
+    subjectInput.setCustomValidity(subjectInput.value.trim() ? '' : '과목을 입력하세요.');
+    return form.reportValidity();
+}
+
+titleInput.addEventListener('input', function () { titleInput.setCustomValidity(''); });
+subjectInput.addEventListener('input', function () { subjectInput.setCustomValidity(''); });
+
+form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (!validate()) return;
+
+    const task = {
+        id: nextId,
+        title: titleInput.value.trim(),
+        subject: subjectInput.value.trim(),
+        dueDate: dateInput.value,
+        priority: priorityInput.value,
+        status: statusInput.value
+    };
+    tasks.push(task);
+    nextId++;
+    form.reset();
+    render();
+    message.textContent = '할 일을 등록했습니다.';
+    titleInput.focus();
+});
 
 // Array의 현재 내용으로 표 전체를 다시 만듭니다.
 function render() {
