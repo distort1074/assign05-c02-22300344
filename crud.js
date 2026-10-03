@@ -69,6 +69,18 @@ function editTask(id) {
     titleInput.focus();
 }
 
+function deleteTask(id) {
+    const task = tasks.find(function (task) { return task.id === id; });
+    if (!task || !confirm('「' + task.title + '」을(를) 삭제하시겠습니까?')) return;
+
+    // 화면뿐 아니라 실제 Array에서도 삭제합니다.
+    tasks = tasks.filter(function (task) { return task.id !== id; });
+    if (editingId === id) resetForm();
+    render();
+    message.textContent = '할 일을 삭제했습니다.';
+    titleInput.focus();
+}
+
 cancelButton.addEventListener('click', function () {
     resetForm();
     message.textContent = '수정을 취소했습니다.';
@@ -154,7 +166,7 @@ function render() {
         deleteButton.type = 'button';
         deleteButton.className = 'delete-button';
         deleteButton.textContent = '삭제';
-        deleteButton.disabled = true;
+        deleteButton.addEventListener('click', function () { deleteTask(task.id); });
         deleteButton.setAttribute('aria-label', task.title + ' 삭제');
 
         actions.appendChild(editButton);
