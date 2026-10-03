@@ -19,6 +19,9 @@ header {
 
 .brand { font-weight: bold; letter-spacing: 2px; }
 header a { color: white; font-size: 14px; }
+nav { display: flex; gap: 20px; }
+.home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.page-link { display: inline-block; margin-top: 16px; color: #9a481b; font-weight: bold; }
 main { max-width: 1100px; margin: auto; padding: 36px 24px; }
 .eyebrow { margin-bottom: 4px; color: #9a481b; font-weight: bold; }
 h1 { margin: 0; font-size: 34px; }
@@ -95,4 +98,5 @@ footer { padding: 24px; text-align: center; color: #626975; font-size: 12px; }
     h1 { font-size: 28px; }
     .form-grid { grid-template-columns: 1fr; }
     .wide-field { grid-column: auto; }
+    .home-grid { grid-template-columns: 1fr; gap: 0; }
 }
