@@ -73,6 +73,20 @@ th { background: #f3f1ed; white-space: nowrap; }
 .row-actions button { padding: 5px 9px; font-size: 13px; }
 .edit-button { background: #293246; }
 .delete-button { background: #a13636; }
+.edit-button:hover:not(:disabled) { background: #172034; }
+.delete-button:hover:not(:disabled) { background: #7d2424; }
+.row-actions button + button { margin-left: 6px; }
+tbody tr:hover { background: #fcfaf5; }
+td:nth-child(2), td:nth-child(3) { min-width: 130px; overflow-wrap: anywhere; }
+td:nth-child(4) { white-space: nowrap; }
+td:nth-child(5), td:nth-child(6) { min-width: 84px; }
+#form-error { color: #a12c2c; min-height: 24px; font-size: 14px; }
+[aria-invalid="true"] { border-color: #a12c2c; }
+#message { color: #354b33; min-height: 24px; margin-bottom: 0; }
+#task-count { color: #626975; font-size: 14px; }
+.form-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 8px; }
+[hidden] { display: none !important; }
+.table-wrap:focus-visible { outline-offset: 4px; }
 footer { padding: 24px; text-align: center; color: #626975; font-size: 12px; }
 
 @media (max-width: 650px) {
